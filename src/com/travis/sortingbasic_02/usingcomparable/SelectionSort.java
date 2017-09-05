@@ -8,6 +8,7 @@ public class SelectionSort {
     // 我们的算法类不允许产生任何实例
     private SelectionSort(){}
 
+    @SuppressWarnings("unchecked")
     public static void sort(Comparable[] arr){
         int len = arr.length;
         for ( int i = 0 ; i < len - 1; i++ ) {

@@ -2,7 +2,7 @@ package com.travis.sortingbasic_02.selectionsort;
 
 /**
  * 2017/9/3
- * 选择排序
+ * 选择排序,只能排序int类型的数据
  */
 public class SelectionSort {
 

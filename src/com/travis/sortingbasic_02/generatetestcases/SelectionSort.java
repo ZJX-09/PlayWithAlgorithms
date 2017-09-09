@@ -1,7 +1,7 @@
-package com.travis.sortingbasic_02.usingcomparable;
+package com.travis.sortingbasic_02.generatetestcases;
 
 /**
- *  使用Comparable接口去解决选择排序只能排序int类型的数据
+ * 使用泛型去解决只能排序int类型数据
  */
 public class SelectionSort {
 
@@ -9,13 +9,15 @@ public class SelectionSort {
     private SelectionSort(){}
 
     @SuppressWarnings("unchecked")
-    public static void sort(Comparable[] arr){
+    public static <T extends Comparable<T>> void sort(T[] arr){
         int len = arr.length;
         for ( int i = 0 ; i < len - 1; i++ ) {
             int minIndex = i;
             for ( int j = i + 1 ; j < len ; j++ ) {
                 // 使用compareTo方法比较两个Comparable对象的大小
-                if ( arr[j].compareTo(arr[minIndex]) < 0 ) minIndex = j;
+                if ( arr[j].compareTo(arr[minIndex]) < 0 ) {
+                    minIndex = j;
+                }
             }
             // swap each other
             if ( minIndex != i ) swap(arr,i,minIndex);
@@ -27,5 +29,17 @@ public class SelectionSort {
         arr[i] = arr[j];
         arr[j] = temp;
     }
+
+    public static void main(String[] args) {
+
+        int n = 1000;
+        Integer[] arr = SortTestHelper.generateRandomArray(n, 0,n);
+        sort(arr);
+        if (!SortTestHelper.isSorted(arr)) return ;
+        SortTestHelper.printArry(arr);
+
+    }
+
+
 
 }

@@ -49,6 +49,29 @@ public class SortTestHelper {
 
     }
 
+    /**
+     * 生成一个接近有序的整型数组
+     * @param n 元素个数
+     * @param rangeL 最小范围
+     * @param t 交换的次数
+     * @return 接近有序数组
+     */
+    public static Integer[] generateAlmostOrderlyArray(int n,int rangeL,int t){
+        Integer[] arr = new Integer[n];
+
+        for (int i = 0 ; i < n ; i++) {
+            arr[i] = i + rangeL;
+        }
+        for (int i = 0 ; i < t ; i++) {
+            int random1 = (int) (Math.random() * n);
+            int random2 = (int) (Math.random() * n);
+            int temp = arr[random1];
+            arr[random1] = arr[random2];
+            arr[random2] = temp;
+        }
+        return arr;
+    }
+
     public static void printArry(Object[] arr){
 
         int len = arr.length;
